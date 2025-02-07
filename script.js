@@ -44,9 +44,7 @@ fgFrame.onload = checkFramesLoaded;
 upload.addEventListener("change", function (event) {
     const file = event.target.files[0];
     if (!file) return;
-
     const fileType = file.type;
-
     // Nếu là HEIC, chuyển sang JPG
     if (fileType === "image/heic" || file.name.endsWith(".heic")) {
         try {
