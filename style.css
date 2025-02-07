@@ -24,13 +24,13 @@ canvas {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    align-items: left;
+    align-items: center;
 }
 
 .control-group {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: left;
     gap: 10px;
     width: 100%;
 }
