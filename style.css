@@ -30,7 +30,7 @@ canvas {
 .control-group {
     display: flex;
     flex-wrap: wrap;
-    justify-content: left;
+    justify-content: center;
     gap: 10px;
     width: 100%;
 }
