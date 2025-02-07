@@ -45,23 +45,39 @@ upload.addEventListener("change", function (event) {
     const file = event.target.files[0];
     if (!file) return;
 
+    const fileType = file.type;
+
+    // Nếu là HEIC, chuyển sang JPG
+    if (fileType === "image/heic" || file.name.endsWith(".heic")) {
+        try {
+            const blob = await heic2any({ blob: file, toType: "image/jpeg" });
+            const convertedFile = new File([blob], file.name.replace(".heic", ".jpg"), { type: "image/jpeg" });
+            loadImage(convertedFile);
+        } catch (error) {
+            alert("Không thể chuyển đổi HEIC. Vui lòng thử lại!");
+        }
+    } 
+    // Nếu là JPG hoặc PNG, xử lý như bình thường
+    else if (fileType === "image/jpeg" || fileType === "image/png") {
+        loadImage(file);
+    } 
+    else {
+        alert("Chỉ hỗ trợ định dạng JPG và PNG.");
+        event.target.value = ""; // Xóa file không hợp lệ
+    }
+});
+// Hàm xử lý file ảnh sau khi chuyển đổi HEIC hoặc file hợp lệ
+function loadImage(file) {
     const reader = new FileReader();
     reader.onload = function (e) {
         userImg = new Image();
         userImg.onload = function () {
-            if (removeBgCheckbox.checked) {
-                removeBackground(userImg, (processedImg) => {
-                    userImg = processedImg;
-                    drawCanvas();
-                });
-            } else {
-                drawCanvas();
-            }
+            drawCanvas();
         };
         userImg.src = e.target.result;
     };
     reader.readAsDataURL(file);
-});
+}
 
 // Hàm xóa nền
 function removeBackground(image, callback) {
