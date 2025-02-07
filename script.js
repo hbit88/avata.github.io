@@ -42,7 +42,35 @@ fgFrame.onload = checkFramesLoaded;
 
 // Xử lý tải ảnh lên
 upload.addEventListener("change", function (event) {
-   const file = event.target.files[0];
+  const file = event.target.files[0];
+    if (!file) return;
+
+    const fileType = file.type;
+
+    // Nếu là HEIC, chuyển sang JPG
+    if (fileType === "image/heic" || file.name.endsWith(".heic")) {
+        try {
+            const blob = await heic2any({ blob: file, toType: "image/jpeg" });
+            const convertedFile = new File([blob], file.name.replace(".heic", ".jpg"), { type: "image/jpeg" });
+            loadImage(convertedFile);
+        } catch (error) {
+            alert("Không thể chuyển đổi HEIC. Vui lòng thử lại!");
+        }
+    } 
+    // Nếu là JPG hoặc PNG, xử lý như bình thường
+    else if (fileType === "image/jpeg" || fileType === "image/png") {
+        loadImage(file);
+    } 
+    else {
+        alert("Chỉ hỗ trợ định dạng JPG và PNG.");
+        event.target.value = ""; // Xóa file không hợp lệ
+        drawCanvas();
+    }
+});
+
+// Xử lý tải ảnh lên
+upload.addEventListener("changes", function (event) {
+    const file = event.target.files[0];
     if (!file) return;
 
     const reader = new FileReader();
@@ -61,8 +89,8 @@ upload.addEventListener("change", function (event) {
         userImg.src = e.target.result;
     };
     reader.readAsDataURL(file);
-    
 });
+
 // Hàm xử lý file ảnh sau khi chuyển đổi HEIC hoặc file hợp lệ
 function loadImage(file) {
     const reader = new FileReader();
