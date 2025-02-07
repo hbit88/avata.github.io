@@ -22,16 +22,21 @@
 <body>
     <div class="container">
         <h2>Tạo Ảnh Đại Diện Facebook</h2>
-        <input type="file" id="upload" accept="image/jpeg, image/png, image/heic">
+       <div class="upload-container"> 
+         <label for="upload" class="custom-upload">
+           <span>📸 Chọn ảnh (JPG, PNG, HEIC) - Tỷ lệ 1:1</span>
+            <input type="file" id="upload" accept="image/jpeg, image/png, image/heic">
+         </label>
         <label style="visibility: hidden;"><input type="checkbox" id="remove-bg"> Xóa nền</label> 
+       </div> 
         <div class="canvas-container">
             <canvas id="canvas"></canvas>
         </div>
         <div class="controls">
             <div class="control-group">
-                <label>Trái/Phải:</label>
+                <label>Trái / Phải:</label>
                 <input type="range" id="moveX" min="-150" max="150" step="1" value="0">
-                <label>Lên/Xuống:</label>
+                <label>Lên / Xuống:</label>
                 <input type="range" id="moveY" min="-150" max="150" step="1" value="0">
             </div>
             <div class="control-group">
