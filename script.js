@@ -62,7 +62,9 @@ upload.addEventListener("change", function (event) {
     else {
         alert("Chỉ hỗ trợ định dạng JPG và PNG.");
         event.target.value = ""; // Xóa file không hợp lệ
+        drawCanvas();
     }
+    
 });
 // Hàm xử lý file ảnh sau khi chuyển đổi HEIC hoặc file hợp lệ
 function loadImage(file) {
