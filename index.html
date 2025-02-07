@@ -15,13 +15,14 @@
   <meta property="og:image" content="https://avata.mobifone.one/bg-frame.png">
   <meta property="og:image:alt" content="Avata 10 năm thành lập MobiFone 8">
   <meta property="og:description" content="Avata 10 năm thành lập MobiFone 8">
-    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
+   <script src="https://cdn.jsdelivr.net/npm/heic2any"></script>
 </head>
 
 <body>
     <div class="container">
         <h2>Tạo Ảnh Đại Diện Facebook</h2>
-        <input type="file" id="upload" accept="image/*">
+        <input type="file" id="upload" accept="image/jpeg, image/png, image/heic">
         <label style="visibility: hidden;"><input type="checkbox" id="remove-bg"> Xóa nền</label> 
         <div class="canvas-container">
             <canvas id="canvas"></canvas>
