@@ -16,14 +16,16 @@
   <meta property="og:image:alt" content="10 năm thành lập MobiFone 8">
   <meta property="og:description" content="10 năm thành lập MobiFone 8">
   <link rel="stylesheet" href="style.css"> 
-</head>
-
+</head> 
 <body>
+    <div id="particles-js"></div> <!-- Hiệu ứng nền -->
     <div class="container">
-        <h2>10 NĂM THÀNH LẬP MOBIFONE 8</h2>
-        <h4>THẬP KỶ GẮP KẾT - KỶ NGUYÊN VƯƠN MÌNH</h4> 
-        <p style="margin: 2px; font-size: small;"> Chọn ảnh 📸(JPG, PNG) - Tỷ lệ 1:1.</p>
-        <input type="file" id="upload" accept="image/jpeg, image/png"> 
+        <div class="header-container">
+            <h2>10 NĂM THÀNH LẬP MOBIFONE 8</h2>
+            <h4>THẬP KỶ GẮP KẾT - KỶ NGUYÊN VƯƠN MÌNH</h4> 
+            <p style="margin: 2px; font-size: small;"> Chọn ảnh 📸(JPG, PNG) - Tỷ lệ 1:1.</p>
+            <input type="file" id="upload" accept="image/jpeg, image/png">
+        </div> 
         <div class="canvas-container">
             <canvas id="canvas"></canvas> 
         </div>
@@ -48,6 +50,7 @@
             Công cụ xóa nền
         </button>
     </div>
+    <script src="particles.min.js"></script> <!-- thư vien hieu ung nen -->
     <script src="script.js"></script>
 </body>
 

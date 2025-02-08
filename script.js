@@ -149,3 +149,74 @@ downloadBtn.addEventListener("click", function () {
     link.href = canvas.toDataURL("image/png");
     link.click();
 });
+
+// Cài đặt các tham số hiệu ứng nền
+particlesJS("particles-js", {
+    particles: {
+        number: {
+            value: 100, // Số lượng hạt
+            density: {
+                enable: true,
+                value_area: 800
+            }
+        },
+        color: {
+            value: "#ffffff" // Màu hạt
+        },
+        shape: {
+            type: "star", // Hình dạng hạt (circle, edge, triangle, polygon, star)
+            stroke: {
+                width: 0,
+                color: "#000000"
+            }
+        },
+        opacity: {
+            value: 0.5,
+            random: false
+        },
+        size: {
+            value: 3, // Kích thước hạt
+            random: true
+        },
+        line_linked: {
+            enable: true, // Nối các hạt bằng đường thẳng
+            distance: 150,
+            color: "#ffffff",
+            opacity: 0.4,
+            width: 1
+        },
+        move: {
+            enable: true,
+            speed: 2, // Tốc độ di chuyển của hạt
+            direction: "none",
+            random: false,
+            straight: false,
+            out_mode: "out"
+        }
+    },
+    interactivity: {
+        detect_on: "canvas",
+        events: {
+            onhover: {
+                enable: true,
+                mode: "repulse" // Khi di chuột, các hạt sẽ đẩy nhau các giá trị khác(grab , bubble, repulse, none) 
+            },
+            onclick: {
+                enable: true,
+                mode: "push" // Khi click, tạo thêm hạt
+            }
+        },
+        modes: {
+            repulse: {
+                distance: 100,
+                duration: 0.4
+            },
+            push: {
+                particles_nb: 4
+            }
+        }
+    },
+    retina_detect: true
+});
+
+ 

@@ -1,14 +1,20 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    margin: 20px;
+    color: #FBB144; 
+    margin: auto;    
 }
 
 .container {
     max-width: 500px;
-    margin: auto;
+    margin: auto;    
 }
 
+.header-container{
+    justify-content: center;
+    margin: 20px;
+    padding-top: 10px;
+}
 .canvas-container {
     display: flex;
     justify-content: center;
@@ -60,7 +66,7 @@ canvas {
 button {
     padding: 10px 15px;
     margin: 5px;
-    background: #007bff;
+    background: linear-gradient(to bottom, rgba(30,73,154,1) 0%,rgba(32,103,202,1) 31%,rgba(32,103,202,1) 36%,rgba(42,117,216,1) 53%,rgba(126,174,232,1) 100%);
     color: white;
     border: none;
     cursor: pointer;
@@ -69,4 +75,15 @@ button {
 
 button:hover {
     background: #0056b3;
+}
+
+/* Hiển thị hiệu ứng particles.js toàn màn hình */
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #000e4d; /* Màu nền, có thể chỉnh */
+    z-index: -1;
+    padding: auto;
+    margin: auto;
 }
