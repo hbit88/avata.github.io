@@ -1,10 +1,10 @@
-html, body {
+body {
     font-family: Arial, sans-serif;
     text-align: center;
     color: #FBB144; 
     margin: 0;
     padding: 0; 
-    overflow: hidden; /* Đảm bảo không có thanh cuộn */
+   /* overflow: hidden; /* Đảm bảo không có thanh cuộn */
 }
 
 .container {
