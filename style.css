@@ -1,8 +1,10 @@
-body {
+html, body {
     font-family: Arial, sans-serif;
     text-align: center;
     color: #FBB144; 
-    margin: auto;    
+    margin: 0;
+    padding: 0; 
+    overflow: hidden; /* Đảm bảo không có thanh cuộn */
 }
 
 .container {
@@ -80,10 +82,10 @@ button:hover {
 /* Hiển thị hiệu ứng particles.js toàn màn hình */
 #particles-js {
     position: fixed;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background: #000e4d; /* Màu nền, có thể chỉnh */
     z-index: -1;
-    padding: auto;
-    margin: auto;
+    top: 0;
+    left: 0;
 }
