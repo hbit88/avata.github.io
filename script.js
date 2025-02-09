@@ -10,7 +10,7 @@ const roundnessInput = document.getElementById("roundness");
 
 const BG_FRAME_SRC = "bg-frame.png";
 const FG_FRAME_SRC = "fg-frame.png";
-const REAL_CANVAS_SIZE = 5906; // Kích thước gốc
+const REAL_CANVAS_SIZE = 2048; // Kích thước gốc
 const CANVAS_SIZE = 400; // Kích thước canvas (1:1)
 
 // lấy kích thước theo anh gốc
@@ -163,12 +163,19 @@ resetBtn.addEventListener("click", function () {
     offsetX = 0;
     offsetY = 0;
     roundness = 0;
-    croppedImage = null;
+
+    // Cập nhật thanh điều chỉnh về mặc định
     zoomInput.value = "1";
     moveXInput.value = "0";
     moveYInput.value = "0";
     roundnessInput.value = "0";
-    drawCanvas();
+
+    // Load lại ảnh gốc
+    if (userImg) {
+        croppedImage = cropToSquare(userImg);
+    }
+
+    drawCanvas(); // Vẽ lại ảnh với giá trị mặc định
 });
 
 // Xử lý tải ảnh xuống
