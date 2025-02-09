@@ -10,10 +10,17 @@ const roundnessInput = document.getElementById("roundness");
 
 const BG_FRAME_SRC = "bg-frame.png";
 const FG_FRAME_SRC = "fg-frame.png";
+const REAL_CANVAS_SIZE = 5906; // Kích thước gốc
 const CANVAS_SIZE = 400; // Kích thước canvas (1:1)
 
-canvas.width = CANVAS_SIZE;
-canvas.height = CANVAS_SIZE;
+// lấy kích thước theo anh gốc
+canvas.width = REAL_CANVAS_SIZE;
+canvas.height = REAL_CANVAS_SIZE;
+
+// Điều chỉnh hiển thị bằng CSS
+canvas.style.width = CANVAS_SIZE + "px";
+canvas.style.height = CANVAS_SIZE + "px";
+
 
 let userImg = null;
 let croppedImage = null;
@@ -68,8 +75,8 @@ function cropToSquare(img) {
     return newImg;
 }
 
-// Vẽ ảnh lên canvas
-function drawCanvas() {
+// Vẽ ảnh lên canvas Giam ty le anh
+function drawCanvas_1() {
     ctx.clearRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
     ctx.drawImage(bgFrame, 0, 0, CANVAS_SIZE, CANVAS_SIZE);
 
@@ -89,6 +96,28 @@ function drawCanvas() {
     }
 
     ctx.drawImage(fgFrame, 0, 0, CANVAS_SIZE, CANVAS_SIZE);
+}
+
+// Vẽ lên ảnh thoe anh gốc sau đó hiển thị lên theo tỷ lệ display
+function drawCanvas() {
+    ctx.clearRect(0, 0, REAL_CANVAS_SIZE, REAL_CANVAS_SIZE);
+    ctx.drawImage(bgFrame, 0, 0, REAL_CANVAS_SIZE, REAL_CANVAS_SIZE);
+
+    if (croppedImage) {
+        const imgWidth = REAL_CANVAS_SIZE * zoom;
+        const imgHeight = REAL_CANVAS_SIZE * zoom;
+        const imgX = REAL_CANVAS_SIZE / 2 - imgWidth / 2 + offsetX * (REAL_CANVAS_SIZE / CANVAS_SIZE);
+        const imgY = REAL_CANVAS_SIZE / 2 - imgHeight / 2 + offsetY * (REAL_CANVAS_SIZE / CANVAS_SIZE);
+
+        ctx.save();
+        ctx.beginPath();
+        drawRoundedRect(ctx, imgX, imgY, imgWidth, imgHeight, roundness * (REAL_CANVAS_SIZE / CANVAS_SIZE));
+        ctx.clip();
+        ctx.drawImage(croppedImage, imgX, imgY, imgWidth, imgHeight);
+        ctx.restore();
+    }
+
+    ctx.drawImage(fgFrame, 0, 0, REAL_CANVAS_SIZE, REAL_CANVAS_SIZE);
 }
 
 // Vẽ hình chữ nhật bo tròn từng góc
@@ -145,7 +174,7 @@ resetBtn.addEventListener("click", function () {
 // Xử lý tải ảnh xuống
 downloadBtn.addEventListener("click", function () {
     const link = document.createElement("a");
-    link.download = "avatar_fb.png";
+    link.download = "avatar_10nam_mbf8.png";
     link.href = canvas.toDataURL("image/png");
     link.click();
 });

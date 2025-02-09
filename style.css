@@ -26,6 +26,8 @@ body {
 canvas {
     border: 2px solid #ccc;
     cursor: grab;
+    width: 400px;
+    height: 400px;
 }
 
 .controls {
