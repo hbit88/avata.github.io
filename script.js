@@ -11,7 +11,7 @@ const roundnessInput = document.getElementById("roundness");
 const BG_FRAME_SRC = "bg-frame.png";
 const FG_FRAME_SRC = "fg-frame.png";
 const REAL_CANVAS_SIZE = 2048; // Kích thước gốc
-const CANVAS_SIZE = 400; // Kích thước canvas (1:1)
+const CANVAS_SIZE = window.innerWidth > 768 ? 500 : 400;; // Kích thước canvas (1:1) neu Desktop: 500px, Mobile: 400px
 
 // lấy kích thước theo anh gốc
 canvas.width = REAL_CANVAS_SIZE;
